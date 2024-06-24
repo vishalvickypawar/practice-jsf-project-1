@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>List of Phones</title>
+</head>
+<body>
+    <f:view>
+        <h:form>
+            <h:dataTable value="#{MobilePhone.allMobiles}" var="m">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{m.id}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:outputText value="#{m.name}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">OS</f:facet>
+                    <h:outputText value="#{m.os}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">RAM</f:facet>
+                    <h:outputText value="#{m.ram}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Storage</f:facet>
+                    <h:outputText value="#{m.storage}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    <h:outputText value="#{m.price}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        <hr/>
+        <h:form>
+            <h4>Pick a Phone: </h4>
+            <h:selectOneMenu value="#{MobilePhone.price}" onchange="submit()" valueChangeListener="MobilePhone.onValueChange">
+                <f:selectItems value="#{MobilePhone.allMobiles}" var="mobile" itemLabel="#{mobile.name}" itemValue="#{mobile.price}"></f:selectItems>
+            </h:selectOneMenu>
+            <br/>
+            <p>Price: </p>
+            <h:outputText value="#{MobilePhone.price}"></h:outputText>
+        </h:form>
+    </f:view>
+</body>
+</html>

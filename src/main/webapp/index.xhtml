@@ -9,11 +9,14 @@
 <f:view>
     <h1>
         <h:outputText value="#{Mobiles.name}"></h:outputText>
-        <br/>
-        <h:graphicImage id="mobilephone" url="resources/images/phones_home.jpg"></h:graphicImage>
-        <br/>
-        <h:outputLink value="http://www.google.co.in">Google</h:outputLink>
     </h1>
+    <h2>
+        What would you like to do?
+    </h2>
+    <h:form>
+        <h:commandButton action="about" value="About Us"></h:commandButton>
+        <h:commandButton action="view" value="View Phones"></h:commandButton>
+    </h:form>
 </f:view>
 </body>
 </html>
