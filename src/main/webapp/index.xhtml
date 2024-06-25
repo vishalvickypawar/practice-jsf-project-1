@@ -15,7 +15,8 @@
     </h2>
     <h:form>
         <h:commandButton action="about" value="About Us"></h:commandButton>
-        <h:commandButton action="view" value="View Phones"></h:commandButton>
+        <h:commandButton action="view.xhtml?faces-redirect=true" value="View Phones"></h:commandButton>
+        <h:commandButton action="create?faces-redirect=true" value="Add Phone"></h:commandButton>
     </h:form>
 </f:view>
 </body>

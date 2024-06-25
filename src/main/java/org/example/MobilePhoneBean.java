@@ -69,6 +69,15 @@ public class MobilePhoneBean implements Serializable {
         return MobileDatabaseConnection.getAllRecords();
     }
 
+    public String addMobile(){
+        int result = MobileDatabaseConnection.saveRecord(name,os, ram, storage, price);
+        if(result!=0){
+            return "view.xhtml?faces-redirect=true";
+        } else {
+            return "create.xhtml?faces-redirect=true";
+        }
+    }
+
     public void onValueChange(ValueChangeEvent valueChangeEvent){
         this.price = Float.parseFloat(valueChangeEvent.getNewValue().toString());
     }

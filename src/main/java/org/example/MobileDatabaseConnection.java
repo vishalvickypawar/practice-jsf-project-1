@@ -1,9 +1,6 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +21,28 @@ public class MobileDatabaseConnection {
                 mobilePhone.setPrice(resultSet.getFloat("price"));
                 allPhones.add(mobilePhone);
             }
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return allPhones;
+    }
+
+    public static int saveRecord(String name, String os, int ram, int storage, float price){
+        int result = 0;
+        try{
+            Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO mobile_phones(name, os, ram, storage, price) VALUES(?,?,?,?,?)");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, os);
+            preparedStatement.setInt(3, ram);
+            preparedStatement.setInt(4, storage);
+            preparedStatement.setFloat(5, price);
+            result = preparedStatement.executeUpdate();
+            connection.close();
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return result;
     }
 }
